@@ -2,7 +2,14 @@
 name: Hello World
 
 # Events
-on: push
+on: 
+    push:
+        branches:
+            - feature/cicd
+            - main
+            - master
+            - blub
+    workflow_dispatch:
 
 # Jobs
 jobs:
