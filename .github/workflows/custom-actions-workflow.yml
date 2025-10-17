@@ -21,6 +21,10 @@ jobs:
               working-directory: ./.github/actions/custom-action-js
 
             - name: Action ausführen
-              uses: ./.github/actions/custom-action-js
+              id: action-call
+              uses: ./.github/actions/custom-action-js@v2
               with:
                 name: 'Datev'
+            
+            - name: Zeit ausgeben
+              run: echo "Die aktuelle Zeit ist ${{ steps.action-call.outputs.time }}"
