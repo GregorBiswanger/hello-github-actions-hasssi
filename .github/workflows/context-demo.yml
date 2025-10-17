@@ -17,7 +17,7 @@ jobs:
               run: echo $geheim
 
             - name: Secret auf Datev prüfen
-              if: env.secrets == 'I love Datev'
+              if: env.geheim == 'I love Datev'
               run: echo "Viel liebe für Datev"
 
             - name: Zeige GitHub Kontext
