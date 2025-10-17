@@ -22,7 +22,7 @@ jobs:
 
             - name: Action ausführen
               id: action-call
-              uses: ./.github/actions/custom-action-js@v2
+              uses: ./.github/actions/custom-action-js
               with:
                 name: 'Datev'
             
