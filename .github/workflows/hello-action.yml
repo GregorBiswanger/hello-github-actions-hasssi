@@ -1,0 +1,13 @@
+# Workflow Konfiguration
+name: Hello World
+
+# Events
+on: push
+
+# Jobs
+jobs:
+    hello:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Aktuelles Verzeichnis ansehen
+              run: pwd && ls -al
