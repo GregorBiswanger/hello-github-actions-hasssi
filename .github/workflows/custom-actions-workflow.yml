@@ -7,6 +7,8 @@ on:
 jobs:
     hello:
         runs-on: ubuntu-latest
+        permissions: 
+            contents: read
         # defaults:
         #   run:
         #     working-directory: ./.github/actions/custom-action-js
