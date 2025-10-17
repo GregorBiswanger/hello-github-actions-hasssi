@@ -11,7 +11,7 @@ jobs:
         name: Erste Analyse
         runs-on: ubuntu-latest
         env:
-            geheim: '${{ toJson(secrets.MY_SECRET) }}'
+            geheim: ${{ toJson(secrets.MY_SECRET) }}
         steps:
             - name: Zeige unser Geheimnis
               run: echo $geheim
