@@ -10,12 +10,15 @@ jobs:
     job1:
         name: Erste Analyse
         runs-on: ubuntu-latest
-    
+        env:
+            geheim: '${{ toJson(secrets.MY_SECRET) }}'
         steps:
             - name: Zeige unser Geheimnis
-              env:
-                geheim: '${{ toJson(secrets.MY_SECRET) }}'
               run: echo $geheim
+
+            - name: Secret auf Datev prüfen
+              if: env.secrets == 'I love Datev'
+              run: echo "Viel liebe für Datev"
 
             - name: Zeige GitHub Kontext
               run: echo '${{ toJson(github) }}'
