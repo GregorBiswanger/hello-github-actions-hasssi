@@ -41,6 +41,9 @@ jobs:
               id: get_secret_message
               run: echo "message=Wuhuu!" >> "$GITHUB_OUTPUT"
 
+            - name: Zeige Steps Kontext
+              run: echo '${{ toJson(steps) }}'
+
     job2:
         name: Zeige Werte aus Job 1
         runs-on: ubuntu-latest
