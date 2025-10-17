@@ -1,29 +1,40 @@
 # Workflow Konfiguration
 name: Hello World
+env:
+  GLOBAL_MESSAGE: "Hallo aus dem Workflow"
 
 # Events
 on: 
     push:
         branches:
-            - feature/cicd
+            - 'feature/**'
+            - '!feature/old'
             - main
             - master
-            - blub
     workflow_dispatch:
 
 # Jobs
 jobs:
     hello:
         runs-on: ubuntu-latest
+        env:
+            JOB_MESSAGE: "Hallo aus dem Job"
         steps:
+            - name: Ausgabe global
+              run: |
+                echo "GLOBAL_MESSAGE: $GLOBAL_MESSAGE"
+                echo "JOB_MESSAGE: $JOB_MESSAGE"
+
             - name: Aktuelles Verzeichnis ansehen
-              run: pwd && ls -al
+              env:
+                STEP_MESSAGE: 'Message aus dem Step'
+              run: pwd && ls -al && echo $STEP_MESSAGE
 
             - name: Checkout der Dateien
               uses: actions/checkout@v4
 
             - name: Aktuelles Verzeichnis ansehen
-              run: pwd && ls -al
+              run: pwd && ls -al && echo $STEP_MESSAGE
             
             - name: Lade hello-world.js als Artifact hoch
               uses: actions/upload-artifact@v4
@@ -35,6 +46,11 @@ jobs:
         runs-on: ubuntu-latest
         needs: hello
         steps:
+            - name: Ausgabe global
+              run: |
+                echo "GLOBAL_MESSAGE: $GLOBAL_MESSAGE"
+                echo "JOB_MESSAGE: $JOB_MESSAGE"
+
             - name: Lade hello-world.js von Artifact herunter
               uses: actions/download-artifact@v4
               with:
