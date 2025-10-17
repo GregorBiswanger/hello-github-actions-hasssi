@@ -11,3 +11,7 @@ jobs:
         steps:
             - name: Aktuelles Verzeichnis ansehen
               run: pwd && ls -al
+            - name: Checkout der Dateien
+              uses: actions/checkout@v4
+            - name: Aktuelles Verzeichnis ansehen
+              run: pwd && ls -al
