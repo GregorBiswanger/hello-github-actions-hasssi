@@ -20,6 +20,10 @@ jobs:
               if: env.geheim == 'I love Datev'
               run: echo "Viel liebe für Datev"
 
+            - name: Secret auf Datev production prüfen
+              if: env.geheim == 'I love really Datev'
+              run: echo "Viel liebe für Datev (Production Version)"
+
             - name: Zeige GitHub Kontext
               run: echo '${{ toJson(github) }}'
 
