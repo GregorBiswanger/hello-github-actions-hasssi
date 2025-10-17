@@ -12,6 +12,8 @@ jobs:
         runs-on: ubuntu-latest
         env:
             geheim: ${{ secrets.MY_SECRET }}
+        environment: Production
+
         steps:
             - name: Zeige unser Geheimnis
               run: echo $geheim
